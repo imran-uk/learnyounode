@@ -1,4 +1,4 @@
-//console.log(process.argv);
+console.log(process.argv);
 
 var total = 0;
 var argz = process.argv;
