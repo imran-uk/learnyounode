@@ -12,7 +12,9 @@ newlineCount = fileContent.toString().split("\n").length;
 
 //console.log(fileName);
 
+console.log("hello!");
 console.log(newlineCount - 1);
+
 
 /*
     var fs = require('fs')
