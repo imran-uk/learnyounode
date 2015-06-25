@@ -1,6 +1,8 @@
 var fs = require("fs");
 var path = require("path");
 
+// call: node 05-filtered-ls-async.js filez txt
+
 var extensionFilter = "." + process.argv[3];
 
 var getFilteredFileList = function getFilteredFileList(err, list) {
