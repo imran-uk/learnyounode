@@ -6,7 +6,8 @@ module.exports = function(fileDir, fileExt, callback) {
   var matchList = [];
 
   function getFilteredFileList(err, fileList) {
-    if(err) { throw err; }
+    if(err)
+      return callback(err);
 
     var formattedFileExt = "." + fileExt;
 
@@ -20,7 +21,7 @@ module.exports = function(fileDir, fileExt, callback) {
 
     fileList.forEach(filterEntry);
 
-    callback(matchList);
+    callback(err, matchList);
   }
 
   fs.readdir(fileDir, getFilteredFileList);
