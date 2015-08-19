@@ -1,17 +1,17 @@
 var fs = require("fs");
 var path = require("path");
 
-module.exports = function(fileDir, fileExt, callback) {
+module.exports = function(fileDir, fileExt, printFileList) {
  
   var matchList = [];
 
   function getFilteredFileList(err, fileList) {
     if(err)
-      return callback(err);
+      return printFileList(err);
 
     var formattedFileExt = "." + fileExt;
 
-    function filterEntry(element, index, array) {
+    function filterEntry(element) {
       var extension = path.extname(element);
 
       if(extension === formattedFileExt) {
@@ -19,9 +19,9 @@ module.exports = function(fileDir, fileExt, callback) {
       }
     }
 
-    fileList.forEach(filterEntry);
+    fileList.filter(filterEntry);
 
-    callback(err, matchList);
+    printFileList(err, matchList);
   }
 
   fs.readdir(fileDir, getFilteredFileList);
