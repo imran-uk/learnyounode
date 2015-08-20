@@ -3,7 +3,10 @@ var fs = require("fs");
 var getNewlineCount = function getNewlineCount(err, data) {
   if(err) { throw err };
 
-  console.log(data.toString().split("\n").length - 1);
+  console.log(
+      'newlines in ' + process.argv[2] + ':', 
+      data.toString().split("\n").length - 1
+  );
 }
 
 var fileContent = fs.readFile(

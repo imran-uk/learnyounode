@@ -1,4 +1,4 @@
-console.log(process.argv);
+//console.log(process.argv);
 
 var total = 0;
 var argz = process.argv;
@@ -11,4 +11,4 @@ function sumNumbers(element, index, array) {
   total += Number(element);
 }
 
-console.log(total);
+console.log('the total is: ', total);
