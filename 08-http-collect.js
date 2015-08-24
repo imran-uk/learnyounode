@@ -1,32 +1,30 @@
 var http = require('http');
+var concat = require('concat-stream');
 
 var url = process.argv[2];
 
-http.get(
-    url, 
-    function (response) {
-      var responseData = [];
-      //response.setEncoding('utf8');
-      response.on(
-          'data', 
-          function(data) { 
-            //console.log(data);
-            responseData.push(data);
-          }
-      );
+http
+.get(url, function(res) {
+  res.setEncoding('utf8');
+  res.pipe(concat(function(data) { 
+    console.log(data.length);
+    console.log(data);
+  }));
+})
+.on('error', function(e) { console.log("Got error: " + e.message); })
 
-      response.on(
-          'error',
-          function(error) {
-            console.log("Shit, there was an error: ", error);
-          }
-      );
-
-      response.on(
-          'end',
-          function() {
-            console.log(responseData);
-          }
-      );
-    }
-);
+// official answer
+/*
+    var http = require('http')
+    var bl = require('bl')
+    
+    http.get(process.argv[2], function (response) {
+      response.pipe(bl(function (err, data) {
+        if (err)
+          return console.error(err)
+        data = data.toString()
+        console.log(data.length)
+        console.log(data)
+      }))  
+    })
+*/
