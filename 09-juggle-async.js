@@ -5,8 +5,6 @@ var count = 0;
 var callbackData = [];
 var urlArray = process.argv.slice(2, 5);
 
-urlArray.forEach(printData);
-
 function printData(url, index, array) {
   http
   .get(url, function(res) {
@@ -17,6 +15,8 @@ function printData(url, index, array) {
 
       count++;
 
+      // TODO
+      // i was doing (callbackData.length === 3) here - why did that work?
       if(count === 3) {
         callbackData.forEach(
             function(pageData, pageDataIndex, pageDataArray) {
@@ -28,6 +28,8 @@ function printData(url, index, array) {
   })
   .on('error', function(e) { console.log("Got error: " + e.message); })
 }
+
+urlArray.forEach(printData);
 
 /* official solution
 
