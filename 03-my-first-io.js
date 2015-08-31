@@ -12,7 +12,8 @@ newlineCount = fileContent.toString().split("\n").length;
 
 //console.log(fileName);
 
-console.log('total number of newlines in ' + fileName + ':', newlineCount - 1);
+//console.log('total number of newlines in ' + fileName + ':', newlineCount - 1);
+console.log(newlineCount - 1);
 
 
 /*

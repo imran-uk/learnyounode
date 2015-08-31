@@ -11,4 +11,4 @@ function sumNumbers(element, index, array) {
   total += Number(element);
 }
 
-console.log('the total is: ', total);
+console.log(total);

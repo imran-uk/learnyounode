@@ -22,3 +22,20 @@ var getFilteredFileList = function getFilteredFileList(err, list) {
 // gotcha: if getFilteredFileList is defined after this async call then it will
 // fail silently
 fs.readdir(process.argv[2], getFilteredFileList);
+
+/*
+
+official solution
+
+    var fs = require('fs')
+    var path = require('path')
+    
+    fs.readdir(process.argv[2], function (err, list) {
+      list.forEach(function (file) {
+        if (path.extname(file) === '.' + process.argv[3])
+          console.log(file)
+      })
+    })
+
+
+*/
